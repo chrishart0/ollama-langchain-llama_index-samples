@@ -72,7 +72,6 @@ agent_executor = AgentExecutor(
 
 
 def send_message(message, chat_history):
-    print(chat_history)
     response = agent_executor.invoke(
         {
             "input": message,
