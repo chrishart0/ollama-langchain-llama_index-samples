@@ -40,7 +40,7 @@ llm = ChatOllama(  model=model, base_url=base_url )
 
 # Get the prompt to use - you can modify this!
 # prompt = hub.pull("archit0/react-chat-json")
-prompt = hub.pull("hwchase17/react")
+prompt = hub.pull("hwchase17/react-chat")
 # prompt = hub.pull("homanp/superagent") # Give non openai models open-ai like ability to use tools
 
 ### Tools Setup ###
@@ -61,12 +61,7 @@ tools = [
 
 ######################
 
-# agent = create_openai_functions_agent(llm, tools, prompt)
-agent = create_react_agent(
-    llm, 
-    tools, 
-    prompt
-)
+agent = create_react_agent(llm, tools, prompt)
 
 agent_executor = AgentExecutor(
     agent=agent, 
@@ -77,15 +72,16 @@ agent_executor = AgentExecutor(
 
 
 def send_message(message, chat_history):
+    print(chat_history)
     response = agent_executor.invoke(
         {
             "input": message,
             "chat_history": chat_history,
-            "tool_names": ["Search"],
             "tools": tools,
         }
     )
-
+    chat_history.append(HumanMessage(content=message))
+    chat_history.append(AIMessage(content=response.get("output")))
     return response.get("output")
 
 
@@ -101,17 +97,18 @@ If given a simple prompt, such as hi, simple respond with your identity.
 """
 def run_chat():
     console = Console()
-    chat_history = [ SystemMessage (content=system_prompt)]
+    chat_history = [SystemMessage(content=system_prompt)]
 
     while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'exit':
-            print("Exiting chat...")
-            break
-        response = send_message(user_input, chat_history)
-        chat_history.append(HumanMessage(content=user_input))
-        chat_history.append(AIMessage(content=response))
-        console.print(Markdown(response))
+        try:
+            user_input = input("You: ")
+            if user_input.lower() == 'exit':
+                print("Exiting chat...")
+                break
+            response = send_message(user_input, chat_history)
+            console.print(Markdown(response))
+        except Exception as e:
+            console.print(f"Error occurred: {e}")
 
 # Execute the chat interface
 run_chat()
