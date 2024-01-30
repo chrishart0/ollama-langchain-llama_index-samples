@@ -95,7 +95,9 @@ def send_message(message, chat_history):
 
 # # Now add a simple chat interface
 system_prompt = """
-You are OllamaBot. 
+You are Ollama Research Bot.
+Only use a tool if you need to, otherwise, just talk to me!
+If given a simple prompt, such as hi, simple respond with your identity. 
 """
 def run_chat():
     console = Console()

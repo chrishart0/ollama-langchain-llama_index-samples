@@ -3,14 +3,17 @@ Relevant learning materials
 * https://learn.deeplearning.ai/langchain-chat-with-your-data/lesson/1/introduction
 
 
+![Basic LangChain Agent](images/basic-agent-use.webm)
+
 ## Setup
 ### 1) Prepare the ollama
 Follow the official docs to get setup: <https://github.com/ollama/ollama>
 
 #### Configure your .env file as needed
 * Ensure the `MODEL` defined is one you have downloaded with ollama
-    * Default model is `mixtral:latest`, so you will need to run `ollama pull mixtral:latest` if you don't have it already
-    * *NOTE: Mixtral is pretty big, you may need to change this out for a smaller model to get better speeds or fit in another GPU*
+    * NOTE: The `mistral` model provided by ollama is really `7b-instruct-v0.2-q4_0`. This model is blazing fast, but isn't that smart and will fail on anything but simple questions.
+        * This may change in the future as ollama updates their defaults
+    * For higher quality outputs, try updating the model to `mixtral`, note this will be slower
 * Make sure the URL specified is correct for your setup of Ollama
 
 ### 2) Install prereqs
