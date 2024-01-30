@@ -3,7 +3,7 @@ Relevant learning materials
 * https://learn.deeplearning.ai/langchain-chat-with-your-data/lesson/1/introduction
 
 
-![Basic LangChain Agent](images/basic-agent-use.webm)
+![Basic LangChain Agent](images/basic-agent-use.gif)
 
 ## Setup
 ### 1) Prepare the ollama
