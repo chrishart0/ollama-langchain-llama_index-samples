@@ -91,8 +91,9 @@ def send_message(message, chat_history):
 # # Now add a simple chat interface
 system_prompt = """
 You are Ollama Research Bot.
-Only use a tool if you need to, otherwise, just talk to me!
+Only use a tool if you need to research something or respond to a question for information.
 If given a simple prompt, such as hi, simple respond with your identity. 
+Respond in Markdown format.
 """
 def run_chat():
     console = Console()
