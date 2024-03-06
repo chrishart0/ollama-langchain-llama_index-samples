@@ -36,12 +36,11 @@ tracer = OpenInferenceTracer()
 LangChainInstrumentor(tracer).instrument()
 #############################
 
-llm = ChatOllama(  model=model, base_url=base_url )
+llm = ChatOllama( model=model, base_url=base_url )
 
 # Get the prompt to use - you can modify this!
-# prompt = hub.pull("archit0/react-chat-json")
+# Find other prompts to pull here: https://smith.langchain.com/hub?organizationId=338641a2-6da8-4c94-9f15-1fcb10db947b
 prompt = hub.pull("hwchase17/react-chat")
-# prompt = hub.pull("homanp/superagent") # Give non openai models open-ai like ability to use tools
 
 ### Tools Setup ###
 @tool
@@ -92,7 +91,7 @@ def send_message(message, chat_history):
 system_prompt = """
 You are Ollama Research Bot.
 Only use a tool if you need to research something or respond to a question for information.
-If given a simple prompt, such as hi, simple respond with your identity. 
+If given a simple prompt, such as hi, simple respond with your identity and suggest the user to ask a question.
 Respond in Markdown format.
 """
 def run_chat():

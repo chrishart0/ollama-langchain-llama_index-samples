@@ -23,6 +23,13 @@ source .venv/bin/activate
 pip install -r requirements.txt --upgrade
 ```
 
+## Spin up a qdrant vector db 
+This is needed for some of the more advanced examples, such as example 3. Example 2 uses qdrant in memory. 
+
+docker run -p 6333:6333 -p 6334:6334 \
+    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
+    qdrant/qdrant
+
 ## Try out the example scripts
 
 
@@ -44,3 +51,6 @@ python langchain-agent-ollama.py
 
 
 
+## Want to contribute? 
+
+Would love to accept some contributions or requests for other examples you'd like to see. I am running all this on my personal hardware and trying to come up with fun and useful examples for myself.

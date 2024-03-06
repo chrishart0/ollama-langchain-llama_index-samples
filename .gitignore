@@ -246,3 +246,9 @@ $RECYCLE.BIN/
 .aws-sam
 .DS_Store
 
+
+# Llama_Index
+pipeline_storage/
+qdrant_data/
+data/Kubernetes/
+qdrant_data/meta.json
