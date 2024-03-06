@@ -7,12 +7,9 @@ import os
 import phoenix as px
 import sys
 from qdrant_client import QdrantClient
-from langchain_community.chat_models import ChatOllama
-from langchain_core.prompts import ChatPromptTemplate
-from llama_index.callbacks import CallbackManager
-from llama_index.llms import Ollama
-from llama_index import VectorStoreIndex, ServiceContext, SimpleDirectoryReader
-from llama_index.storage.storage_context import StorageContext
+from llama_index.llms.ollama import Ollama
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings, StorageContext
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from phoenix.trace.llama_index import OpenInferenceTraceCallbackHandler
 
@@ -38,15 +35,19 @@ session = px.launch_app()
 # Initialize Ollama Model
 ####################################################################################
 # Setup Ollama model with specific configurations for use in chat interactions.
-print("Initializing Ollama...")
-llm = ChatOllama(
+print("Configuring Ollama...")
+Settings.llm = Ollama(
     model=model,
     base_url=base_url,
-    request_timeout=100  # Adjust timeout for model responsiveness.
+    request_timeout=120  # Adjust timeout for model responsiveness.
 )
+Settings.context_window = 4096
 
-# Prepare a template for generating chat prompts.
-prompt = ChatPromptTemplate.from_template("Tell me a short joke about {topic}")
+# Must us a local embeddings model, otherwise will default to OpenAI
+print("Configuring Local Embeddings Models...")
+Settings.embed_model = HuggingFaceEmbedding(
+    model_name="BAAI/bge-small-en-v1.5"
+)
 
 ####################################################################################
 # Callback Handler Setup
@@ -83,17 +84,11 @@ qdrant_storage_context = StorageContext.from_defaults(
 ####################################################################################
 # Service Context and Index Initialization
 ####################################################################################
-# Configure the service context for use with LlamaIndex and local language model.
-service_context = ServiceContext.from_defaults(
-    llm=llm,
-    embed_model="local",
-    callback_manager=CallbackManager(handlers=[callback_handler]),
-)
 
 # Create a VectorStoreIndex and query engine based on the loaded documents.
 print("Creating index...")
 qdrant_index = VectorStoreIndex.from_documents(
-    documents, storage_context=qdrant_storage_context, service_context=service_context
+    documents, storage_context=qdrant_storage_context
 )
 
 print("Creating query engine...")
