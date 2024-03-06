@@ -99,6 +99,13 @@ qdrant_index = VectorStoreIndex.from_documents(
 print("Creating query engine...")
 query_engine = qdrant_index.as_query_engine()
 
+
+####################################################################################
+# Phoenix Monitoring URL
+####################################################################################
+# Display the URL for active session monitoring in Phoenix.
+print("Phoenix Monitoring URL:", px.active_session().url)
+
 ####################################################################################
 # User Interaction Loop
 ####################################################################################
@@ -116,9 +123,3 @@ while True:
     response = query_engine.query(user_input)
     print(response)
     print("")# New line for readability
-
-####################################################################################
-# Phoenix Monitoring URL
-####################################################################################
-# Display the URL for active session monitoring in Phoenix.
-print("Phoenix Monitoring URL:", px.active_session().url)
