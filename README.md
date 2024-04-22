@@ -7,7 +7,14 @@ Relevant learning materials
 
 ## Setup
 ### 1) Prepare the ollama
-Follow the official docs to get setup: <https://github.com/ollama/ollama>
+* Follow the official docs to get setup: <https://github.com/ollama/ollama>
+* Ensure you have the needed model pulled down
+
+You can check the .env file to see what model is specified, you will need to ensure that model is pulled down. 
+```
+ollama pull llama3:8b-text-fp16
+# ollama pull llama3
+```
 
 #### Configure your .env file as needed
 * Ensure the `MODEL` defined is one you have downloaded with ollama
