@@ -1,5 +1,5 @@
-langchain==0.1.20 # https://pypi.org/project/langchain/
-langchainhub==0.1.20 # https://pypi.org/project/langchainhub/
+langchain==0.2.6 # https://pypi.org/project/langchain/
+# langchainhub==0.1.20 # https://pypi.org/project/langchainhub/
 llama-index==0.10.50 # https://pypi.org/project/llama-index/
 ollama==0.2.1 # https://pypi.org/project/ollama/
 llama-index-llms-ollama==0.1.5 # https://pypi.org/project/llama-index-llms-ollama/
