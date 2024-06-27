@@ -26,14 +26,14 @@ base_url=os.getenv("BASE_OLLAMA_URL")
 
 
 ### Monitoring and Tracing for LangChain ###
-import phoenix as px
-from phoenix.trace.langchain import OpenInferenceTracer, LangChainInstrumentor
+# import phoenix as px
+# from phoenix.trace.langchain import OpenInferenceTracer, LangChainInstrumentor
 
 # To view traces in Phoenix, you will first have to start a Phoenix server. You can do this by running the following:
-session = px.launch_app()
+# session = px.launch_app()
 
-tracer = OpenInferenceTracer()
-LangChainInstrumentor(tracer).instrument()
+# tracer = OpenInferenceTracer()
+# LangChainInstrumentor(tracer).instrument()
 #############################
 
 llm = ChatOllama( model=model, base_url=base_url )

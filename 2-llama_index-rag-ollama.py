@@ -108,7 +108,7 @@ print("Phoenix Monitoring URL:", px.active_session().url)
 print("") # New line for readability
 print("Note: This is a pure LlamaIndex RAG chat. It will always try to do a RAG query, so simple statements like 'hi' will produce an unrelated RAG response.")
 print("Starting chat...")
-print("Try a question like: 'Where was Ben Franlkin Born?' or 'When did Ben Franklin move to Philidelphia?'")
+print("Try a question like: 'Where was Ben Franlkin born?' or 'When did Ben Franklin move to Philidelphia?'")
 print ("Type 'exit' to end the chat.")
 print("") # New line for readability
 while True:

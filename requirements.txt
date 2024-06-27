@@ -1,23 +1,22 @@
-langchain==0.1.11 # https://pypi.org/project/langchain/
-langchainhub==0.1.15 # https://pypi.org/project/langchainhub/
-llama-index==0.10.30 # https://pypi.org/project/llama-index/
-ollama==0.1.8 # https://pypi.org/project/ollama/
-llama-index-llms-ollama==0.1.2 # https://pypi.org/project/llama-index-llms-ollama/
-llama-index-vector-stores-qdrant==0.2.3 # https://pypi.org/project/llama-index-vector-stores-qdrant/
-llama-index-embeddings-huggingface== 0.2.0 # https://pypi.org/project/llama-index-embeddings-huggingface/
+langchain==0.1.20 # https://pypi.org/project/langchain/
+langchainhub==0.1.20 # https://pypi.org/project/langchainhub/
+llama-index==0.10.50 # https://pypi.org/project/llama-index/
+ollama==0.2.1 # https://pypi.org/project/ollama/
+llama-index-llms-ollama==0.1.5 # https://pypi.org/project/llama-index-llms-ollama/
+llama-index-vector-stores-qdrant==0.2.10 # https://pypi.org/project/llama-index-vector-stores-qdrant/
+llama-index-embeddings-huggingface== 0.2.2 # https://pypi.org/project/llama-index-embeddings-huggingface/
 
-qdrant-client==1.8.0 # https://pypi.org/project/qdrant-client/
-sentence-transformers==2.7.0 # https://pypi.org/project/sentence-transformers/
+qdrant-client==1.9.2 # https://pypi.org/project/qdrant-client/
+sentence-transformers==3.0.1 # https://pypi.org/project/sentence-transformers/
 EbookLib
 html2text
 
 # Observability
-arize-phoenix==3.23.0 # https://pypi.org/project/arize-phoenix/
+arize-phoenix==4.5.0 # https://pypi.org/project/arize-phoenix/
 
 # Agent tools
-requests==2.31.0 # https://pypi.org/project/requests/
+requests==2.32.3 # https://pypi.org/project/requests/
 duckduckgo_search==5.0 # https://pypi.org/project/duckduckgo-search/
-
 
 # PDF tools
 pypdf
